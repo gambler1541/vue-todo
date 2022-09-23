@@ -4,14 +4,28 @@
         <span class="addContainer"  v-on:click="addTodo">
             <i class="fa-solid fa-plus addBtn"></i>
         </span>
+        <!-- use the modal component, pass in the prop -->
+        <Teleport to="body">
+            <TodoModal :show="showModal" @close="showModal = false">
+                <template #header>
+                    <h3>이런?</h3>
+                </template>
+                <template #body>
+                    <p>내용을 입력해주세요</p>
+                </template>
+            </TodoModal>
+        </Teleport>
     </div>
 </template>
 
 <script>
+import TodoModal from './common/TodoModal.vue'
+
 export default {
     data: function() {
         return {
-            newTodoItem: ""
+            newTodoItem: "",
+            showModal: false,
         }
     },
     methods: {
@@ -19,11 +33,16 @@ export default {
             if(this.newTodoItem !== ''){
                 this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
+            } else {
+                this.showModal = true;
             }
         },
         clearInput: function(){
             this.newTodoItem = '';
         }
+    },
+    components: {
+        TodoModal,
     }
 }
 </script>
