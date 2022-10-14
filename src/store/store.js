@@ -38,8 +38,8 @@ export const store = new Vuex.Store({
         },
         toggleOneItem(state, payload) {
             state.todoItems[payload.index].complated = !state.todoItems[payload.index].complated;
-            localStorage.removeItem(payload.item);
-            localStorage.setItem(payload.item, JSON.stringify(payload));
+            localStorage.removeItem(payload.todoItem.item);
+            localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
         },
         clearAllItem(state) {
             localStorage.clear();
