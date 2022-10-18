@@ -1,13 +1,9 @@
 <template>
-  <div>
+  <div id="app">
     <todo-header></todo-header>
-    <todo-input v-on:addTodoItem="addOneItem"></todo-input>
-    <todo-list
-      v-bind:propsdata="todoItems"
-      v-on:removeItem="removeOneItem"
-      v-on:toggleItem="toggleOneItem"
-    ></todo-list>
-    <todo-footer v-on:clearAll="clearAllItem"></todo-footer>
+    <todo-input></todo-input>
+    <todo-list></todo-list>
+    <todo-footer></todo-footer>
   </div>
 </template>
 
@@ -18,11 +14,6 @@ import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
   
 export default {
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
   components: {
     TodoHeader,
     TodoInput,
